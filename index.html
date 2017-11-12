@@ -1,35 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
+   <head>
+      <meta charset="utf-8">
+      <title>neighborhood map</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/style.css">
+      <script src="js/knockout.js"></script>
+      <script src="js/jQuery.js"></script>
+            <script src="js/frame.js"></script>
 
-    </style>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/knockout.js"></script>
-  <script src="js/jQuery.js"></script>
-  <script src="js/frame.js"></script>
-
-  </head>
-  <body>
-
-   <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn"  onclick="closeNav()">&times;</a>
-  <div><input id="show-listing" type="button" value="Show listing" ><input  id="hide-listing" type="button" value="Hide listing"></div>
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" data-bind="value: input" >
-<ul id="list" data-bind = " text: info"></ul>
-
-</div>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-    <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-
-
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJw6f5bp4FzSQJ41UIatbBO34cwpKX6cA&v=3&callback=initMap"
-    onerror="error"
-    >
-    </script>
-
-  </body>
+   </head>
+   <body>
+      <div id="mySidenav" class="sidenav">
+         <a href="javascript:void(0)" class="closebtn"  onclick="closeNav()">&times;</a>
+         <input type="text" id="myInput" placeholder="Search for names.." title="Type in a name" data-bind="textInput: searchTerm, valueUpdate: 'afterkeydown'">
+         <ul id="list" data-bind="foreach: filteredList">
+            <li class="place" id="place"> <button data-bind="text: info, click: bounce" ></button></li>
+         </ul>
+      </div>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+      <h3><a href="https://blog.expedia.com.au/the-25-most-beautiful-places-in-australia/">THE 25 MOST BEAUTIFUL PLACES IN AUSTRALIA</a></h3>
+      <div id="map"><img src="img/337b8a7d-0fe4-4574-9210-bec0bfd0b1af.png" alt=""></div>
+      <script async defer
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJw6f5bp4FzSQJ41UIatbBO34cwpKX6cA&v=3&callback=startApp"
+         onerror="error()"></script>
+   </body>
 </html>
-
